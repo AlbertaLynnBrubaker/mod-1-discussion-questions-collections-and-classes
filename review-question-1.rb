@@ -1,5 +1,5 @@
 ## QUESTION 1
-
+require 'pry'
 pokemon = [
   {
     "id": 1,
@@ -59,11 +59,32 @@ pokemon = [
   ]
 }
 ]
-
-
 # How would you get the url for Bulbasaur's ability?
+puts pokemon[0][:abilities][0][:ability][:url]
 # How would you return the first pokemon with base experience over 40?
+answer = pokemon.find do |poke|
+    poke[:base_experience] > 40
+end
+puts answer
 # How would you return ALL OF THE pokemon with base experience over 40? (Gotta catch em all)
+over_forty = pokemon.filter do |poke|
+    poke[:base_experience] > 40
+end
+puts over_forty
 # How would you return an array of all of the pokemon's names?
+pokemon_names = pokemon.map do |poke|
+    poke[:name]
+end
+puts pokemon_names
 # How would you determine whether or not the pokemon array contained any pokemon with a weight greater than 60?
 #  whatever method you use should return true if there are any such pokemon, false if not.
+over_sixty = pokemon.any? do |poke|
+    poke[:weight] > 60
+end
+puts over_sixty
+over_60 = pokemon.map do |poke|
+    if poke[:weight] >= 60
+        poke
+   end
+end
+puts over_60
